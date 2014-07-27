@@ -1,9 +1,169 @@
 @import 'bourbon';
 
+html,
+body {
+	width: 100%;
+	height: 100%;
+	margin: 0;
+	padding: 0;
+}
+.content {
+	position: relative;
+	z-index: 1;
+	width: 100%;
+	height: 100%;
+
+	nav {
+		padding-top: 30px;
+	}
+
+	footer {
+		position: absolute;
+		bottom: 50px;
+		width: 100%;
+		height: 0;
+		text-align: center;
+		color: #F65656;
+	}
+}
 .content header {
 	text-align: center;
+}
+#loader {
+	position: absolute;
+	z-index: 999;
+	top: 0;
+	left: 0;
+	width: 100%;
+	height: 100%;
+
+	.spinner {
+		margin: auto;
+		position: absolute;
+		top: 0;
+		left: 0;
+		bottom: 0;
+		right: 0;
+		width: 250px;
+		height: 150px;
+		z-index: 2;
+		overflow: hidden;
+		@include transition (all .4s ease-in-out);
+		@include animation(rotateplane 1.8s infinite ease-in-out);
+
+		img {
+			width: 100%;
+			height: auto;
+		}
+	}
+
+	.bg {
+		position: absolute;
+		z-index: 1;
+		top: 0;
+		left: 0;
+		width: 100%;
+		height: 100%;
+		background-color: #fff;
+	}
 }
 #logo {
 	width: 50%;
 	max-width: 300px;
+	padding-top: 20px;
+}
+#menu {
+
+	li {
+		display: inline-block;
+		width: 140px;
+		height: 140px;
+		cursor: pointer;
+
+		img {
+			width: 100%;
+			height: auto;
+		}
+	}
+
+	li:hover {
+		@include animation(rubberBand .8s 1 ease-in-out);
+	}
+}
+
+.animation-fade-out {
+	opacity: 0;
+}
+.animation-go-up {
+	@include animation-play-state(paused !important);
+	@include transform(scale(0) perspective(150px) rotateY(0deg) rotateX(0deg) !important);
+	opacity: 0;
+	top: -75% !important;
+}
+
+@include keyframes(rotateplane) {
+  0% {
+  	@include transform(perspective(150px));
+  }
+  33.3333% {
+  	@include transform(perspective(150px) rotateY(180deg));
+  }
+  66.6666% {
+  	@include transform(perspective(200px) rotateY(180deg)  rotateX(180deg));
+  }
+  100% {
+  	@include transform(perspective(150px) rotateY(0deg) rotateX(0deg));
+  }
+}
+
+@include keyframes(pulse) {
+  0% {
+	@include transform(scale3d(1, 1, 1));
+  }
+
+  50% {
+	@include transform(scale3d(1.05, 1.05, 1.05));
+  }
+
+  100% {
+	@include transform(scale3d(1, 1, 1));
+  }
+}
+
+.pulse {
+  @include transform(animation-name(pulse));
+}
+
+@include keyframes(rubberBand) {
+  0% {
+    @include transform(scale3d(1, 1, 1));
+  }
+
+  30% {
+    @include transform(scale3d(1.25, 0.75, 1));
+  }
+
+  40% {
+    @include transform(scale3d(0.75, 1.25, 1));
+  }
+
+  50% {
+    @include transform(scale3d(1.15, 0.85, 1));
+  }
+
+  65% {
+    @include transform(scale3d(.95, 1.05, 1));
+  }
+
+  75% {
+    @include transform(scale3d(1.05, .95, 1));
+  }
+
+  100% {
+    @include transform(scale3d(1, 1, 1));
+  }
+}
+
+.rubberBand {
+	@include transform(animation-name(rubberBand));
 }

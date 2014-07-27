@@ -20,6 +20,12 @@
             <p class="browsehappy">You are using an <strong>outdated</strong> browser. Please <a href="http://browsehappy.com/">upgrade your browser</a> to improve your experience.</p>
         <![endif]-->
 
+        <div id="loader">
+            <div class="spinner">
+                <img src="images/logo.jpg" alt="Adriana Doi">
+            </div>
+            <div class="bg"></div>
+        </div>
 
         <div id="content" class="content">
 
@@ -29,10 +35,16 @@
 
                 <nav>    
                     <ul id="menu">
-                        <li><a href="#/about">About</a></li>
-                        <li><a href="#/drawings">Drawings</a></li>
-                        <li><a href="#/porn_monsters">Porn Monsters</a></li>
-                        <li><a href="#/contacts">Contacts</a></li>
+                        <li class="about animation-item-pulse">
+                            <img src="images/face.jpg" alt="About">
+                            <a href="#/about">About</a>
+                        </li>
+                        <li class="drawings animation-item-pulse"><a href="#/drawings">Drawings</a></li>
+                        <li class="porn_monsters animation-item-pulse">
+                            <img src="images/boobs.jpg" alt="Porn Monsters">
+                            <a href="#/porn_monsters">Porn Monsters</a>
+                        </li>
+                        <li class="contacts animation-item-pulse"><a href="#/contacts">Contacts</a></li>
                     </ul>
                 </nav>
 
@@ -41,6 +53,10 @@
             <main id="main">
                 
             </main>
+
+            <footer>
+                <p>Copyright © Adriana Doi</p>
+            </footer>
 
         </div>
 
@@ -78,9 +94,11 @@
             ga('create','UA-XXXXX-X');ga('send','pageview');
         </script>
 
-        <script src="//cdnjs.cloudflare.com/ajax/libs/zepto/1.1.4/zepto.min.js"></script>
-        
+        <script src="//cdn.jsdelivr.net/zepto/1.1.3/zepto.min.js"></script>
+        <script src="//cdn.jsdelivr.net/zepto/1.1.3/modules/fx.min.js"></script>
+
         <!-- build:js scripts/vendor.js -->
+        <script src="bower_components/imagesloaded/imagesloaded.pkgd.min.js"></script>
         <script src="bower_components/underscore/underscore.js"></script>
         <script src="bower_components/backbone/backbone.js"></script>
         <!-- endbuild -->

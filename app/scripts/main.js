@@ -105,6 +105,52 @@ window.AdrianadoiCom = {
 
 $(document).ready(function () {
 
-    AdrianadoiCom.init();
+    var $loader = $('#loader');
+    var $spinner = $('.spinner');
+    var imagesLoaded = window.imagesLoaded || false;
+    var transitionend = 'transitionend webkitTransitionEnd oTransitionEnd otransitionend MSTransitionEnd';
+    
+    if ( imagesLoaded ){
+
+        var imgLoad = imagesLoaded( document.querySelector('body img') );
+
+        imgLoad.on('always', function(){
+            console.log('imgLoad always event!');
+        });
+
+        imgLoad.on('done', function(){
+
+            console.log('imgLoad done event!');
+ 
+            // allways delay at least 3s
+            setTimeout(function(){
+
+                // trigger fadeout anim
+                $spinner.addClass('animation-go-up');
+
+                $spinner.one(transitionend, function(){
+
+                    $loader.addClass('animation-fade-out');
+                    $loader.one(transitionend, function(){
+                        $loader.hide();
+                    });
+
+                    AdrianadoiCom.init();
+
+                });
+
+
+            }, 3000);
+
+        });
+
+        imgLoad.on( 'progress', function( instance, image ) {
+
+            var result = image.isLoaded ? 'loaded' : 'broken';
+            console.log( 'image is ' + result + ' for ' + image.img.src );
+        
+        });
+
+    }
 
 });
