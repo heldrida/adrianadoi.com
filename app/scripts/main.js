@@ -4,6 +4,8 @@
 
 window.AdrianadoiCom = {
 
+    cached: {},
+
     Models: {},
 
     Collections: {},
@@ -21,8 +23,6 @@ window.AdrianadoiCom = {
             },
 
             initialize: function(){
-
-                console.log('foo');
 
                 this.render();
 
@@ -42,11 +42,11 @@ window.AdrianadoiCom = {
 
         }),
 
-        HomeView: Backbone.View.extend({
+        AboutView: Backbone.View.extend({
 
             render: function(){
 
-                var template = _.template( $('#homeView').html(), {} );
+                var template = _.template( $('#aboutView').html(), {} );
 
                 console.log( template );
 
@@ -72,27 +72,28 @@ window.AdrianadoiCom = {
 
             routes: {
 
-                'home': 'home'
+                'about': 'about'
 
             },
 
-            defaultRoute: function() {
-
-                //this.home();
-
-            },
+            defaultRoute: function() {},
 
             initialize: function(){
 
                 this.$content = $('#content');
+                this.$main = $('#main');
 
             },
 
-            home: function(){
+            about: function(){
 
-                var template = new AdrianadoiCom.Views.HomeView();
+                if ( typeof AdrianadoiCom.cached.aboutView === 'undefined' || !AdrianadoiCom.cached.aboutView ){
 
-                this.$content.html( template.el );
+                    AdrianadoiCom.cached.aboutView = new AdrianadoiCom.Views.AboutView();
+
+                }
+
+                this.$main.html( AdrianadoiCom.cached.aboutView.el );
 
             }
 
