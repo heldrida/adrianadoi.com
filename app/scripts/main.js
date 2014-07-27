@@ -16,21 +16,11 @@ window.AdrianadoiCom = {
 
             el: '#menu',
 
-            events: {
-
-                'click li': 'open'
-
-            },
+            events: {},
 
             initialize: function(){
 
                 this.render();
-
-            },
-
-            open: function( event ){
-
-                console.log('open: ' + $(event.currentTarget).text() );
 
             },
 
@@ -42,13 +32,11 @@ window.AdrianadoiCom = {
 
         }),
 
-        AboutView: Backbone.View.extend({
+        myView: Backbone.View.extend({
 
             render: function(){
 
-                var template = _.template( $('#aboutView').html(), {} );
-
-                console.log( template );
+                var template = _.template( $('#' + this.options.viewName + 'View').html(), {} );
 
                 this.$el.html( template );
 
@@ -56,8 +44,9 @@ window.AdrianadoiCom = {
 
             },
 
-            initialize: function(){
+            initialize: function(options){
 
+                this.options = options;
                 this.render();
 
             }
@@ -72,7 +61,7 @@ window.AdrianadoiCom = {
 
             routes: {
 
-                'about': 'about'
+                ':param': 'openSection'
 
             },
 
@@ -85,17 +74,19 @@ window.AdrianadoiCom = {
 
             },
 
-            about: function(){
+            openSection: function(viewName){
+                
+                console.log(viewName);
 
-                if ( typeof AdrianadoiCom.cached.aboutView === 'undefined' || !AdrianadoiCom.cached.aboutView ){
+                if ( typeof AdrianadoiCom.cached[ viewName + 'View' ] === 'undefined' || !AdrianadoiCom.cached[ viewName + 'View' ] ){
 
-                    AdrianadoiCom.cached.aboutView = new AdrianadoiCom.Views.AboutView();
+                    AdrianadoiCom.cached[ viewName + 'View' ] = new AdrianadoiCom.Views.myView({ viewName: viewName });
 
                 }
 
-                this.$main.html( AdrianadoiCom.cached.aboutView.el );
+                this.$main.html( AdrianadoiCom.cached[ viewName + 'View' ].el );
 
-            }
+            },
 
         })
 
