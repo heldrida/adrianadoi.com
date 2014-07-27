@@ -3,16 +3,16 @@
     <head>
         <meta charset="utf-8">
         <meta http-equiv="X-UA-Compatible" content="IE=edge">
-        <title>AdrianadoiCom</title>
+        <title>Adriana Doi</title>
         <meta name="description" content="">
         <meta name="viewport" content="width=device-width, initial-scale=1">
         <!-- Place favicon.ico and apple-touch-icon.png in the root directory -->
         <!-- build:css(.tmp) styles/main.css -->
+        <link rel="bower_components/pure/pure-min.css"></link>
         <link rel="stylesheet" href="styles/main.css">
         <!-- endbuild -->
         <!-- build:js scripts/vendor/modernizr.js -->
         <script src="bower_components/modernizr/modernizr.js"></script>
-        <script src="bower_components/pure/pure-min.css"></script>
         <!-- endbuild -->
     </head>
     <body>
@@ -21,12 +21,26 @@
         <![endif]-->
 
 
-        <div class="content">
+        <div id="content" class="content">
+
             <header>
                 <img id="logo" src="images/logo.jpg" alt="Adriana Doi">
             </header>
+
+            <ul id="menu">
+                <li>About</li>
+                <li>Gallery</li>
+                <li>Blog</li>
+                <li>Contacts</li>
+            </ul>
+
         </div>
 
+        <script type="text/template" id="homeView">
+            <section id="home">
+                home view
+            </section>
+        </script>
 
         <!-- Google Analytics: change UA-XXXXX-X to be your site's ID. -->
         <script>
