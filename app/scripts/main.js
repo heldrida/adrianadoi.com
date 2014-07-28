@@ -109,7 +109,7 @@ window.AdrianadoiCom = {
         new AdrianadoiCom.Views.MenuView();
         new AdrianadoiCom.Routers.Router();
 
-       // Backbone.history.start();
+        Backbone.history.start();
 
     }
 
