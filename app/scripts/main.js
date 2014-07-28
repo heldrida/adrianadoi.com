@@ -108,12 +108,12 @@ window.AdrianadoiCom = {
 
         new AdrianadoiCom.Views.MenuView();
         new AdrianadoiCom.Routers.Router();
-        
+
+        Backbone.history.start();
+
     }
 
 };
-
-Backbone.history.start();
 
 $(document).ready(function () {
 
@@ -140,14 +140,21 @@ $(document).ready(function () {
                 // trigger fadeout anim
                 $spinner.addClass('animation-go-up');
 
-                $spinner.one(transitionend, function(){
+                $spinner.one(transitionend, function(event){
 
-                    $loader.addClass('animation-fade-out');
-                    $loader.one(transitionend, function(){
-                        $loader.hide();
-                    });
+                    if (event.propertyName === 'top') {
 
-                    AdrianadoiCom.init();
+                        $loader.addClass('animation-fade-out');
+
+                        $loader.one(transitionend, function(){
+
+                            $loader.hide();
+
+                        });
+
+                        AdrianadoiCom.init();
+
+                    }
 
                 });
 
