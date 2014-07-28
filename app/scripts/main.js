@@ -16,7 +16,11 @@ window.AdrianadoiCom = {
 
             el: '#menu',
 
-            events: {},
+            events: {
+
+                'click li': 'open'
+
+            },
 
             initialize: function(){
 
@@ -27,6 +31,14 @@ window.AdrianadoiCom = {
             render: function(){
                 
                 return this;
+
+            },
+
+            open: function(event){
+                
+                event.preventDefault();
+
+                window.location.href = $(event.currentTarget).children('.hash').attr('data-hash');
 
             }
 
@@ -97,7 +109,7 @@ window.AdrianadoiCom = {
         new AdrianadoiCom.Views.MenuView();
         new AdrianadoiCom.Routers.Router();
 
-        Backbone.history.start();
+       // Backbone.history.start();
 
     }
 
