@@ -108,12 +108,12 @@ window.AdrianadoiCom = {
 
         new AdrianadoiCom.Views.MenuView();
         new AdrianadoiCom.Routers.Router();
-
-        Backbone.history.start();
-
+        
     }
 
 };
+
+Backbone.history.start();
 
 $(document).ready(function () {
 
@@ -133,7 +133,7 @@ $(document).ready(function () {
         imgLoad.on('done', function(){
 
             console.log('imgLoad done event!');
- 
+
             // allways delay at least 3s
             setTimeout(function(){
 
